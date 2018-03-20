@@ -27,6 +27,12 @@ public class StudentController {
                 model.put("template", "templates/students/index.vtl");
                 return new ModelAndView(model, "templates/layout.vtl");
             }, velocityTemplateEngine);
+
+//            get("/students/:id", (req, res) -> {
+//                int id = Integer.parseInt(req.params(":id"));
+//                Student student = DBStudent.findStudentById(id);
+//                HashMap<String, Object> model
+//            })
         }
 
 

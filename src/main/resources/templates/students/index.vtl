@@ -1,2 +1,24 @@
 <h2 class="pageHeader">STUDENTS</h2>
 
+<div class="container">
+
+    <table>
+        <tr>
+            <th>Name: </th>
+            <th>Age: </th>
+            <th>Enrolment Number: </th>
+            <th>Course: </th>
+        </tr>
+
+        #foreach ($student in $students)
+        <tr>
+            <td>$student.name</td>
+            <td>$student.age</td>
+            <td>$student.enrolmentNumber</td>
+            <td>$student.course.getTitle()</td>
+        </tr>
+        #end
+
+
+    </table>
+</div>
