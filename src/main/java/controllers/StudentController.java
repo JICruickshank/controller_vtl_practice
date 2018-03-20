@@ -1,6 +1,8 @@
 package controllers;
 
+import db.DBCourse;
 import db.DBStudent;
+import models.Course;
 import models.Student;
 import static spark.Spark.get;
 
@@ -28,6 +30,15 @@ public class StudentController {
                 return new ModelAndView(model, "templates/layout.vtl");
             }, velocityTemplateEngine);
 
+            get("/students/new", (req, res) -> {
+                List<Course> courses = DBCourse.getCourses();
+                HashMap<String, Object> model = new HashMap<>();
+                model.put("template", "templates/students/create.vtl");
+                model.put("courses", courses);
+                return new ModelAndView(model, "templates/layout.vtl");
+            }, velocityTemplateEngine);
+
+
             get("/students/:id", (req, res) -> {
                 int id = Integer.parseInt(req.params(":id"));
                 Student student = DBStudent.findStudentById(id);
@@ -36,7 +47,10 @@ public class StudentController {
                 model.put("template", "templates/students/read.vtl");
                 return new ModelAndView(model, "templates/layout.vtl");
             }, velocityTemplateEngine);
+
         }
+
+
 
 
 }
