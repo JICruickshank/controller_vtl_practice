@@ -28,11 +28,14 @@ public class StudentController {
                 return new ModelAndView(model, "templates/layout.vtl");
             }, velocityTemplateEngine);
 
-//            get("/students/:id", (req, res) -> {
-//                int id = Integer.parseInt(req.params(":id"));
-//                Student student = DBStudent.findStudentById(id);
-//                HashMap<String, Object> model
-//            })
+            get("/students/:id", (req, res) -> {
+                int id = Integer.parseInt(req.params(":id"));
+                Student student = DBStudent.findStudentById(id);
+                HashMap<String, Object> model = new HashMap<>();
+                model.put("student", student);
+                model.put("template", "templates/students/read.vtl");
+                return new ModelAndView(model, "templates/layout.vtl");
+            }, velocityTemplateEngine);
         }
 
 
